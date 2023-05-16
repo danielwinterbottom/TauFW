@@ -16,14 +16,18 @@ mtitle   = "m_{#mu#mu}" # [GeV]"
 pgtitle  = "Z p_{#kern[-0.1]{#lower[-0.1]{T}}}"
 mgtitle  = "m_{#mu#mu}" #"m_{Z}"
 njtitle  = "number of jets"
-baseline = "q_1*q_2<0 && pt_2>20 && iso_1<0.15 && iso_2<0.15 && idMedium_1 && idMedium_2 && !extraelec_veto && !extramuon_veto && metfilter && m_ll>20"
+baseline = "q_1*q_2<0 && pt_1>28 && pt_2>20 && iso_1<0.15 && iso_2<0.15 && idMedium_1 && idMedium_2 && !extraelec_veto && !extramuon_veto && metfilter && m_ll>50"
 #baseline = "q_1*q_2<0 && pfRelIso04_all_1<0.15 && pfRelIso04_all_2<0.15 && !extraelec_veto && !extramuon_veto && metfilter && m_vis>20" # old
-Zmbins0  = [20,30,40,50,60,70,80,85,88,89,89.5,90,90.5,91,91.5,92,93,94,95,100,110,120,180,500,1000]
-Zmbins1  = [10,50,70,91,110,150,200,400,800,1500]
+Zmbins0  = [50,60,70,80,85,88,89,89.5,90,90.5,91,91.5,92,93,94,95,100,110,120,180,500,1000]
+Zmbins1  = [50,70,91,110,150,200,400,800,1500]
 ptbins0  = [0,3,6,8,10,12,15,20,25,30,35,40,45,50,60,70,100,140,200,300,500,1000]
 ptbins1  = [0,3,5,7,11,15,30,50,100,200,500,1000]
 njbins1  = [0,1,10]
 
+# Zmbins1 and ptbins1 are the pT and mass bins used for the 2D reweighting
+# These are different for TauPOG and IC setups, the bins above are the POG ones (modified slightly to start from mass>50 GeV). The bins used by IC are: 
+#Zmbins1=[50,60,70,80,90,100,120,140,160,180,200,300,400,600,800,1000]
+#ptbins1=[0,10,20,30,40,60,80,100,120,160,200,280,320,400,600]
 
 def measureZptmass_unfold(samples,outdir='weights',plotdir=None,parallel=True,tag="",dy='jets',yvar='mass',syst="",verb=0):
   """Measure Z pT weights in dimuon pT and mass by unfolding.
